@@ -74,7 +74,7 @@ const [user, repos] = await Promise.all([
 ]);
 //const user = await fetchUser('XavierDM');
 const followerText = user.followers === 1 ? 'loyal subject' : 'loyal subjects';
-console.log(repos[0]);
+//console.log(repos[0]);
 const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
 console.log(
   `${user.name} has ${totalStars} total stars across ${repos.length} repos`
@@ -84,17 +84,21 @@ console.log(
   `${user.name} has ${user.public_repos} repos with ${user.followers} ${followerText}. The account was created on ${date}`
 );
 
-async function safeGet(id) {
-  try {
-    const response = await fetch(`https://api.github.com/users/${id}`);
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    return await response.json();
-  } catch (error) {
-    console.error(
-      `I'm gracefully telling you that there was an error ${error.message}`
-    );
-    return null;
-  }
+function safeGet(obj, path) {
+  const keys = path.split('.');
+  return keys.reduce((current, key) => {
+    return current?.[key] ?? 'Nice try but that doesn not exist here';
+  }, obj);
 }
 
-console.log(safeGet('XavierDM', ['user','profile','city'], 'Unknown'))
+const gebruiker = {
+  name: 'Xavier',
+  profile: {
+    address: {
+      city: 'Waregem',
+    },
+  },
+};
+
+console.log(safeGet(gebruiker, 'profile.address.city'));
+console.log(safeGet(gebruiker, 'profile.phone.mobile'));
