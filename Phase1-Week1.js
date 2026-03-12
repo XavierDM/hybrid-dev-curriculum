@@ -1,6 +1,7 @@
 ////////////////////////////////
 /////// WEEK 1 DAY 1 ///////////
 ////////////////////////////////
+
 const numbers = [1, 2, 3, 4, 5];
 //console.log(numbers);
 const doubled = numbers.map((n) => n * 2);
@@ -36,3 +37,7 @@ const total = employees
   .filter((employee) => employee.department === 'IT')
   .reduce((total, employee) => total + employee.salary, 0);
 console.log(total);
+
+////////////////////////////////
+/////// WEEK 1 DAY 2 ///////////
+////////////////////////////////
