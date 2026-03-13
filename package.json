@@ -1,0 +1,21 @@
+{
+  "name": "hybrid-dev-curriculum",
+  "version": "1.0.0",
+  "description": "30-week self-study curriculum to transition from Power Platform developer to Hybrid Developer (TypeScript · C# · Power Platform) targeting €2,800+ net/month in the Belgian enterprise market.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XavierDM/hybrid-dev-curriculum.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/XavierDM/hybrid-dev-curriculum/issues"
+  },
+  "homepage": "https://github.com/XavierDM/hybrid-dev-curriculum#readme"
+}
