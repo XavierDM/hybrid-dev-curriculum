@@ -1,7 +1,7 @@
 # Phase 1 — JavaScript/TypeScript Foundations
 ## Weeks 1-6
 
-**Focus:** Modern JavaScript and TypeScript from your existing foundation  
+**Focus:** Modern JavaScript and TypeScript from your existing foundation
 **Duration:** 6 weeks | **Hours/week:** 15-20 | **OS:** Windows
 
 ---
@@ -123,7 +123,7 @@ function makeCounter(start = 0) {
     reset: () => { count = start; }
   };
 }
-// State without classes — you'll see this in React hooks
+// State without classes — you'll see this pattern in NestJS services and module design
 ```
 
 ES Modules:
@@ -378,7 +378,7 @@ try {
 
 ```typescript
 // Result pattern — alternative to try/catch at call sites
-type Result<T, E = Error> = 
+type Result<T, E = Error> =
   | { success: true; data: T }
   | { success: false; error: E };
 
