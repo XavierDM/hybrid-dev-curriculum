@@ -1,0 +1,5 @@
+**/*.js
+!Phase1/Week1/*.js
+node_modules/
+dist/
+.env
