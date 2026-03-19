@@ -12,4 +12,4 @@ type UserWithoutPassword = Omit<User, 'password'>; //exclude fields
 type ImmutableUser = Readonly<User>; //nothing can change
 type UserMap = Record<string, User>;
 
-//type CreateUserDto = Omit<User, 'name', 'email'>;
+//type CreateUserDto = Omit<User, 'name', 'email'>
