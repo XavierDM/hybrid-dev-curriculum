@@ -42,3 +42,49 @@ export function debounce<T extends (...args: any[]) => any>(
     timer = setTimeout(() => fn(...args), delay);
   };
 }
+
+export type Result<T, E = Error> =
+  | { success: true; data: T }
+  | { success: false; error: E };
+
+export async function tryCatch<T, E extends Error>(
+  fn: () => Promise<T>
+): Promise<Result<T, E>> {
+  try {
+    const data = await fn();
+    return { success: true, data: data };
+  } catch (error) {
+    const data = error;
+    return { success: false, error: error as E };
+  }
+}
+
+export function memoize<T extends (...args: any[]) => any>(fn: T) {
+  const cache = new Map();
+  return (...args: any[]) => {
+    const cacheKey = JSON.stringify(args);
+    const cachedValue = cache.get(cacheKey);
+
+    if (cachedValue) {
+      console.log(`Cache hit for key: ${cacheKey}`);
+      return cachedValue;
+    }
+    const result = fn(...args);
+    cache.set(cacheKey, result);
+    console.log(`New calculation for key: ${cacheKey}`);
+    return result;
+  };
+}
+
+export async function fetchUser(id: string) {
+  try {
+    const response = await fetch(`https://api.github.com/users/${id}`);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    return await response.json();
+  } catch (error) {
+    console.error(
+      `I'm gracefully telling you that there was an error ${error}`
+    );
+    return null;
+  }
+}
